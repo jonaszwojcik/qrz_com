@@ -1,3 +1,33 @@
+#  Copyright 2023 Jonasz Wojcik, SP2JW
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+# 
+#  Script for upload QSO from excel to QRZ.com
+#  https://github.com/jonaszwojcik/qrz_com
+#  
+#  usage: upload_qso.py [-h] -i I
+#  
+#  optional arguments:
+#    -h, --help       show this help message and exit
+#    -i I, -import I  qso import file name
+#
+#  documentation:
+#  https://www.qrz.com/docs/logbook/QRZLogbookAPI.html
+#  https://www.qrz.com/docs/logbook30/start
+#  https://www.qrz.com/docs/logbook30/adif-standard
+#  http://adif.org.uk/314/ADIF_314.htm#Fields
+
+
 import os
 import logging
 import requests
@@ -5,13 +35,6 @@ import argparse
 import pandas as pd
 from datetime import datetime
 
-# script for upload QSO from excel to QRZ.com
-
-# documentation:
-# https://www.qrz.com/docs/logbook/QRZLogbookAPI.html
-# https://www.qrz.com/docs/logbook30/start
-# https://www.qrz.com/docs/logbook30/adif-standard
-# http://adif.org.uk/314/ADIF_314.htm#Fields
 
 def main(qso_import_file):
     logging.basicConfig(filename=os.path.join(os.path.dirname(__file__), 'log', f'qrz_upload_log_{ts()}'), level=logging.INFO, format='%(asctime)s:%(levelname)s:%(message)s')
